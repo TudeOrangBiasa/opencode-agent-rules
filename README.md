@@ -33,7 +33,7 @@ opencode.json
 
 ## Install
 
-Copy the base files into a project:
+### Option 1: Manual Copy
 
 ```bash
 cp AGENTS.md /path/to/project/
@@ -42,6 +42,21 @@ cp -r .opencode/plugins /path/to/project/.opencode/
 ```
 
 Then merge `opencode.json` into the project's `opencode.json`.
+
+### Option 2: Use /init-rules Command
+
+If you have OpenCode running:
+
+```
+/init-rules
+```
+
+This command will:
+1. Detect project root
+2. Create `.opencode/rules/` and `.opencode/plugins/` if missing
+3. Copy all rule files
+4. Merge with existing AGENTS.md if present
+5. Provide opencode.json merge instructions
 
 ## Compaction Model
 
