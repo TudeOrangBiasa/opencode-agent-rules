@@ -33,7 +33,30 @@ opencode.json
 
 ## Install
 
-### Option 1: Manual Copy
+### Plugin Install (Recommended)
+
+Add to your `opencode.json` (global or project-level):
+
+```json
+{
+  "plugin": [
+    "@tudeorangbiasa/opencode-agent-rules@git+https://github.com/TudeOrangBiasa/opencode-agent-rules.git"
+  ]
+}
+```
+
+Restart OpenCode. The plugin auto-registers rules, agents, and context management.
+
+### npx Install (Fallback)
+
+For projects that prefer local files instead of a plugin:
+
+```bash
+cd your-project
+npx -y -p @tudeorangbiasa/opencode-agent-rules init-rules
+```
+
+### Manual Copy
 
 ```bash
 cp AGENTS.md /path/to/project/
@@ -42,21 +65,6 @@ cp -r .opencode/plugins /path/to/project/.opencode/
 ```
 
 Then merge `opencode.json` into the project's `opencode.json`.
-
-### Option 2: Use /init-rules Command
-
-If you have OpenCode running:
-
-```
-/init-rules
-```
-
-This command will:
-1. Detect project root
-2. Create `.opencode/rules/` and `.opencode/plugins/` if missing
-3. Copy all rule files
-4. Merge with existing AGENTS.md if present
-5. Provide opencode.json merge instructions
 
 ## Compaction Model
 
