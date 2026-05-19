@@ -74,12 +74,14 @@ Free-tier default:
 {
   "agent": {
     "compaction": {
-      "model": "opencode/minimax-m2.1-free",
+      "model": "opencode/minimax-m2.5-free",
       "temperature": 0.1
     }
   }
 }
 ```
+
+Run `opencode models opencode | grep "free"` to verify current free model availability.
 
 ## Context Budget
 
