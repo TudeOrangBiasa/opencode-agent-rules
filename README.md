@@ -40,7 +40,7 @@ Add to your `opencode.json` (global or project-level):
 ```json
 {
   "plugin": [
-    "@tudeorangbiasa/opencode-agent-rules"
+    "@tudeorangbiasa/opencode-agent-rules@latest"
   ]
 }
 ```
