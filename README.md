@@ -74,7 +74,7 @@ Free-tier default:
 {
   "agent": {
     "compaction": {
-      "model": "opencode/minimax-m2.5-free",
+      "model": "opencode/minimax-m2.1-free",
       "temperature": 0.1
     }
   }
