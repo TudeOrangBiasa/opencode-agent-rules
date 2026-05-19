@@ -40,12 +40,24 @@ Add to your `opencode.json` (global or project-level):
 ```json
 {
   "plugin": [
-    "@tudeorangbiasa/opencode-agent-rules@git+https://github.com/TudeOrangBiasa/opencode-agent-rules.git"
+    "@tudeorangbiasa/opencode-agent-rules"
   ]
 }
 ```
 
 Restart OpenCode. The plugin auto-registers rules, agents, and context management.
+
+To pin a specific version:
+
+```json
+{
+  "plugin": [
+    "@tudeorangbiasa/opencode-agent-rules@0.1.2"
+  ]
+}
+```
+
+**Why npm instead of GitHub?** GitHub installs pull the latest commit which may include beta/unstable changes. npm packages are versioned and tested before publish, so you get a stable, mature release.
 
 ### npx Install (Fallback)
 
