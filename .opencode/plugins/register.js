@@ -227,7 +227,7 @@ If intended verification failed and you fall back to a weaker check, say so expl
 const COMMANDS = {
   "init-rules": {
     description: "Install or refresh base agent rules into the current project",
-    prompt: `Install or refresh base agent rules into the current project.
+    template: `Install or refresh base agent rules into the current project.
 
 ## Purpose
 
