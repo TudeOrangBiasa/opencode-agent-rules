@@ -1,6 +1,6 @@
 {
   "name": "@tudeorangbiasa/opencode-agent-rules",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Base OpenCode agent rules for execution discipline, verification, CLI-first scaffolding, and context window management.",
   "type": "module",
   "main": ".opencode/plugins/register.js",
