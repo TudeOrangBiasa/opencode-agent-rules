@@ -1,16 +1,37 @@
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const packageRoot = path.resolve(__dirname, "../..");
 
 const globalConfigDir = path.join(
   process.env.HOME || process.env.USERPROFILE || "",
   ".config",
   "opencode"
 );
+const globalPluginConfigPath = path.join(globalConfigDir, "opencode-agent-rules.json");
+const DEFAULT_PLUGIN_CONFIG = {
+  agent: {
+    compaction: {
+      model: "opencode/minimax-m2.5-free",
+      temperature: 0.1,
+    },
+  },
+};
+
+function readPluginConfig() {
+  if (!fs.existsSync(globalPluginConfigPath)) {
+    try {
+      fs.mkdirSync(path.dirname(globalPluginConfigPath), { recursive: true });
+      fs.writeFileSync(globalPluginConfigPath, `${JSON.stringify(DEFAULT_PLUGIN_CONFIG, null, 2)}\n`);
+    } catch {
+      return DEFAULT_PLUGIN_CONFIG;
+    }
+  }
+
+  try {
+    return JSON.parse(fs.readFileSync(globalPluginConfigPath, "utf-8"));
+  } catch {
+    return DEFAULT_PLUGIN_CONFIG;
+  }
+}
 
 // ── Auto-Migration: Remove old symlinks from v0.1.x ────────────────────────
 
@@ -294,18 +315,11 @@ export default async ({ client, project, directory, $ }) => {
         }
       }
 
-      // Register compaction config
-      const pkgOpencodePath = path.join(packageRoot, "opencode.json");
-      if (fs.existsSync(pkgOpencodePath)) {
-        try {
-          const pkgConfig = JSON.parse(fs.readFileSync(pkgOpencodePath, "utf-8"));
-          if (pkgConfig.agent?.compaction && !cfg.agent?.compaction) {
-            cfg.agent = cfg.agent || {};
-            cfg.agent.compaction = pkgConfig.agent.compaction;
-          }
-        } catch {
-          // skip
-        }
+      // Register compaction config from the single global plugin config.
+      const pluginConfig = readPluginConfig();
+      if (pluginConfig.agent?.compaction && !cfg.agent?.compaction) {
+        cfg.agent = cfg.agent || {};
+        cfg.agent.compaction = pluginConfig.agent.compaction;
       }
     },
   };

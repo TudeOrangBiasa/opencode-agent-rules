@@ -52,7 +52,7 @@ To pin a specific version:
 ```json
 {
   "plugin": [
-    "@tudeorangbiasa/opencode-agent-rules@0.1.2"
+    "@tudeorangbiasa/opencode-agent-rules@0.3.0"
   ]
 }
 ```
@@ -80,6 +80,10 @@ Then merge `opencode.json` into the project's `opencode.json`.
 
 ## Compaction Model
 
+Configure the compaction model in one global plugin config:
+
+`~/.config/opencode/opencode-agent-rules.json`
+
 Free-tier default:
 
 ```json
@@ -94,6 +98,8 @@ Free-tier default:
 ```
 
 Run `opencode models opencode | grep "free"` to verify current free model availability.
+
+Restart OpenCode after editing the global config.
 
 ## Context Budget
 
