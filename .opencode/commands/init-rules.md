@@ -60,7 +60,7 @@ To enable compaction, merge this into your opencode.json:
 {
   "agent": {
     "compaction": {
-      "model": "opencode/minimax-m2.5-free",
+      "model": "opencode/nemotron-3-super-free",
       "temperature": 0.1
     }
   }
@@ -99,7 +99,7 @@ Files:
 {
   "agent": {
     "compaction": {
-      "model": "opencode/minimax-m2.5-free",
+      "model": "opencode/nemotron-3-super-free",
       "temperature": 0.1
     }
   }

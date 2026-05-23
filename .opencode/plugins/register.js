@@ -10,7 +10,7 @@ const globalPluginConfigPath = path.join(globalConfigDir, "opencode-agent-rules.
 const DEFAULT_PLUGIN_CONFIG = {
   agent: {
     compaction: {
-      model: "opencode/minimax-m2.5-free",
+      model: "opencode/nemotron-3-super-free",
       temperature: 0.1,
     },
   },
