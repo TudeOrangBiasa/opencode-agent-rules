@@ -11,6 +11,9 @@
     "opencode.json",
     ".opencode"
   ],
+  "scripts": {
+    "test": "node --test"
+  },
   "keywords": [
     "opencode",
     "agents",
